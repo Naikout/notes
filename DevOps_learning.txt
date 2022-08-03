@@ -1,0 +1,276 @@
+DevOps learning:
+
+Orchestration:
+	- Automation refers to a single tasks
+	- Orchestration refers to the management of many automated tasks
+	- Often a complicated ordering with dependencies
+
+Ansible notes:
+	- Ansible system -> Control Node 
+	- redhat.com or google for docs
+	- playbook.yml, inventory.txt
+	- hosts.txt
+		[webservers] <- group name
+		[dbservers] <- group name
+		[servers:children] <- Reference groups
+		webservers
+		dbservers
+		
+	- Ansible Galaxy (User-generated content)
+	- Role is a package that can be plug-and-play executed in an ansible environment
+	- ansible.cfg aka config file to modify paths and such
+	- playbook sample.yml
+		- name: sampleplaybook
+		  hosts: all
+		  become: yes
+		  become_user: root
+		  tasks:
+			- name ensure apache is at the latest version
+			  yum:
+				name: httpd
+				state: latest
+			- name: ensure apache is running
+			  service:
+				name: httpd
+				state: started
+	- For installation check docs for guide
+	- commands:
+		- ansible myservers -m ping (Check servers)
+			ntiittan@Ubuntu-jammy:~$ ansible localhost -m ping
+			[WARNING]: No inventory was parsed, only implicit localhost is available
+			localhost | SUCCESS => {
+				"changed": false,
+				"ping": "pong"
+			}
+		- ansible-playbook sample.yml
+		- ansible-playbook orchestrate.yml -i myhosts
+		- ansible all -m ping -i myhosts
+		- -f 30 (forks) how many systems to execute upon
+
+Puppet notes:
+	- Roles and profiles
+	- vagrantup.com
+	- Vagrantfile
+		CPUS="1"
+		MEMORY="1024"
+		
+		Vagrant.configure("2") do |config|
+		
+			config.vm.box = "centos/7"
+			config.vm.hostname = "master.puppet.vm"
+			
+			config.vm.provider "virtualbox" do |v|
+				v.name = "master.puppet.vm"
+				v.memory = MEMORY
+				v.cpus = CPUS
+			end
+		
+		end
+	- commands
+		- vagrant up
+		- vagrant ssh
+		- sudo su -
+		- rpm -Uvh https://yum.puppet.com/puppet6-release-el-7.noarch.rpm
+		- yum install -y puppetserver vim git
+		- vim /etc/sysconfig/puppetserver -> JAVA_ARGS Xms2gb (memory alloc)
+		- systemctl start puppetserver (status, enable)
+		- /etc/puppetlabs/puppet/puppet.conf -> host -> master.puppet.vm
+		- add /opt/puppetlabs/puppet/bin to $PATH
+		- exec bash
+		- source .bash_profile
+		- gem --help
+		- gem install r10k
+		- puppet agent -t
+		- Change git branch master to production -> New branch production -> settings set production as default branch -> Save and del master
+		- mkdir /etc/puppetlabs/r10k
+		- vim /etc/puppetlabs/r10k/r10k.yml:
+		:cachedir: '/var/cache/r10k'
+
+		:sources:
+			:my-org:
+				remote: 'https://github.com/user/repo.git'
+				basedi: '/etc/puppetlabs/code/environments'
+		
+		- r10k deploy environment -p <- get code from git
+		- manifests/site.pp
+			node default {
+				file {'root/README':
+				  ensure  => file,
+				  content => 'This is a readme',
+				  owner   => 'root',
+				}
+			}
+		- r10k deploy environment -p <- get code from git
+		- No duplicate declarations, for example two 'file' statements
+	- Puppet forge check for packages (Check quality score and badge)
+	- Puppetfile
+		mod 'puppet/nginx', '1.0.0'
+		mod 'puppetlabs/stdlib'
+		mod 'puppetlabs/concat'
+		mod 'puppetlabs/translate'
+		
+	- control_repo/site/role/manifests/web.pp
+		class profiel::web {
+		  include nginx
+		}
+	- control_repo/site/role/manifests/app_server.pp
+		class role::app_server {
+		  include profile::web
+		  include profile::base
+		  include profile::app
+		}
+		
+	- control_repo/site/role/manifests/app_server.pp
+		class role::db_server {
+		  include profile::base
+		  include profile::db
+		}
+	
+	- control_repo/site/role/manifests/master_server.pp
+		class role::master_server {
+		  include profile::base
+		}
+	
+	- control_repo/
+		environment.conf
+			modulepath = site:modules:$basemodulepath
+		
+	- control_repo/site/role/manifests/site.pp
+			node default {
+				file {'root/README':
+				  ensure  => file,
+				  content => 'This is a readme',
+				  owner   => 'root',
+				}
+			}
+			node 'master.puppe.vm' {
+			  include role::master_server
+			}
+		
+	- puppetlabs docker
+	- Modules
+		- Manifests
+			- Puppet code for your module
+			- One class per manifest
+			- The class named after the moduel is in init.pp
+			- Example: the nginx class in the nginx modules is in manifests/init.pp
+		- Files
+			- Static files such as conf
+		- Templates
+			- Dynamic templates
+		- Lib
+			- Additional code (features)
+		- Task
+			- Ad hoc tasks (puppet bolt)
+		- Other
+			- Examples
+			- spec
+		metadata.json
+			- Fills in the details of the module
+		README.md
+			- Documentation
+			
+		Puppet development kit -> puppetlabs pdk
+
+Docker notes:
+	- docker ps -l or -a 
+	- docker images -a
+	- docker rmi 
+	- MAINTAINER, VOLUME, RUN, ADD, CMD, WORKDIR, EXPOSE, USER, ENTRYPOINT, FROM, COPY
+	- docker info
+	- Docker uses bridges to create networks
+	- docker run -it --rm --net=host
+	- apt update && apt install bridge-utils
+	- docker network create my-new-network
+	- uses iptables fw rules
+	- sudo iptables -n -L -t nat
+	- docker run -p 8080:8080 portforwarding container -> host
+	- docker inspect --format '{{.State.Pid}}' hello -> 7368
+	- docker run --privileged=true --pid=host
+	- kill 7368 -> kills container process
+	- docker secret is CopyOnWrite
+	- mount -o bind other-work work
+	- umount work
+	- ls -R
+	- docker save & load -> migrating between storage types and shipping images on disks
+	- docker compose up
+	- Google kubernets or AWS kubernetes
+	
+Jenkins:
+	- jenkins as a docker container:
+		docker --version
+		docker pull jenkins/jenkins:lts
+		docker run --detach --publish 8080:8080 --volume jenkins_home:/var/jenkins_home --name jenkins jenkins/jenkins:lts
+		docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
+	- Add Maven
+		- Name it
+		- Apply it
+	Job:
+		- Job -> Github hook trigger for GITScm polling
+		- Job -> Poll SCM
+		- CleanWS() or Job -> Delete workspace before build starts
+		- Use secret files
+		- Abort the build if it's stuck
+		- Add timestamps to the console output
+		- 
+
+Kubernetes:
+	- minikube, kind, kubernetes desktop
+	- .yaml files to create deployments
+	- kubectl get pods --show-labels
+	- kubectl label po/helloworld app=helloworldapp --overwrite
+	- kubectl label pod/helloworld app-
+	- kubectl get pods --selector env=production --show-labels
+	- kubectl get pods --selector dev-lead=carisa,env=staging
+	- kubectl get pods -l 'release-version in (1.0.2.0)' --show-labels
+	- kubectl delete pods -l dev-lead=karthik -> Pods "Terminating"
+	- kubectl create -f helloworld-with-probes.yaml
+	- kubectl get deployments
+	- kubectl describe <pod> -> Events: warning etc.
+	- kubectl rollout history
+	- kubectl describe deployment bad-helloworld-deployment -> Events: normal -> kubectl get pods -> kubectl describe po/<pod> -> Events: Warning
+	- kubectl logs <pod>
+	- kubectl exec -it helloworld-deployment /bin/bash -> ps -ef -> exit -> exec -c helloworld
+	- minikube addons list & minikube addons enable dashboard -> metrics-server
+	- minikube dashboard -> Browser -> Labels, metrics, replicasets, events, pods, config, workloads, create apps
+	- kubectl create configmap logger --from-literal=log_level=debug -> configmap "logger" created
+	- kubectl create -f reader-configmap-deployment.yaml
+	- kubectl get configmaps -> get configmap/logger -o yaml
+	- kubectl get deployments -> logreader-dynamic-123123-12312	
+	- kubectl create secret generic apikey --from-literal=api_key=123123123
+	- kubectl get secret apikey -o yaml
+	- secretKeyRef
+	- kubectl get jobs
+	- cron to run jobs periodically -> kubectl get cronjob -> SCHEDULE */1 * * * *
+	- kubectl edit cronjobs/hellocron -> suspend: false -> true
+	- daemonset using busybox
+	- kubectl get daemonsets
+	- zk=zookeeper apache key value store
+	- kubectl get statefulsets
+	- Kubernetes the Hard Way Kelsey Hightower
+	- kubeadm
+	- Flannel and Weave Net for Pod Networks
+	- kops for AWS cluster provisioning
+	- Cloud services have native klustering systems
+	- Managed kubernetes vs self install -> control vs use case
+	- Namespaces:
+		- Kubernetes supports multiple virtual clusters backed by the same physical cluster. These virtual clusters are called namespaces.
+		- For dev test and prod, different usergroups etc.
+	- kubectl get namespaces
+	- kubectl create/delete -n namespace-name namespace
+	Logs:
+		- stdout because kubectl logs will fetch them
+		- Elastic search for kube service and kibana 
+	Monitoring:
+		- cAdvisor open source resource collector
+		- Prometheus open source system monitoring and alerting toolkit
+		- Above tools typically linked to grafana
+		- Datadog and Splunk also
+	Authentication:
+		- Normal users (humans)
+		- Service accounts managed by K8s API
+		- Define user with username, uid, group, extra fields
+		- Modules: client certs, static token files, openID Connect, Webhook mode using kube-apiserver
+		- ABAC: Attribute-based access control (parameter does have authorization or not)
+		- RBAC: Role-based access control (Role has authorization or not)
+		- Webhook (Check using kube-apiserver who has permissions)
