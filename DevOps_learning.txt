@@ -329,8 +329,122 @@ DevOps foundations - CI/CD notes:
 			- Repositories -> Select Recipe
 			- Jenkins plugin for Nexus
 			- Nexus details for jenkins job
-			- 
+			-  
+		- Testing
+			- makefile -> make test etc.
+			- Fast, reliable, isolate failures
+			- Unit (Junit, Xunit, Rspec), integration (Full application, API, Abao, RAML, Serverspec), e2e/ui(Selenium), security testing (Fortify, Findbugs, Gauntlt), Performance testing (System tests etc.)
+			- Shift left meaning move testing to the beginning such as local full tests
+			- Test fixture (set of objects to run tests in a well-known environment (managed like artifacts))
+			- System under test -> The application and system which you are running your tests
+			- Lead time (Time taken from issue to production)
+			- Mock classes that contain external dependencies for unittests
+			Philosophy:
+				- Test-Driven Development write failing tests before coding
+				- Behavior-Driven Development writing tests in a simple end-user-behavior-centric language (like robotframework? Cucumber)
+				- Acceptance test-driven development, the practice of agreeing on acceptance tests before development to establish what is to be delivered
+				- Big three testing metrics:
+					- Cycle time (time from the start of work to delivery)
+					- Velocity (value delivered per unit time)
+					- Customer satisfaction (How well a product/service met the customer's needs. NPS score and bug reports work well here.)
+				- Be strict, test early, invest appropriately (Google guide is 70% E2E, 20% Integration, 10% Unit)
+			Unittests:
+				- Import testable module
+				- Fill arguments with mock data
+				- Check that test parameters are filled
+				- Test valid / invalid scenarios
 		- Deploy using Chef
-		- 
-
-	
+			- Deploy with the same artifact, the same way, same (similar) environment, the same smoke tests -> tag smoke in robot that can be run in production
+			- Deploy small batches
+			- Keep changes loosely coupled to each other
+			- Basic api versioning and schema versioning
+			- Separate deploy and release
+				- Blue/green deployments (publish to one machine at a time)
+				- Feature flags to check if problems with said feature and easy to toggle on/off
+				- Canary deployment
+			- Deployment tools
+				- Source pulls
+				- CM systems Chef or puppet
+				- Orchestration push  like ansible
+				- Build like docker
+				- and many more Commercial options
+				- Custom deploy option
+			- Product update deploys to customer
+				- Debian container -> Update server -> Rundeck orchestration server -> Puppet installation
+			- Deployment using ansible
+				- Dockerfile Ubuntu 20 container
+				- docker-compose.yml with jenkins
+				- docker-compose up --build -d -> jenkins
+				- Ansible plugin for jenkins
+				- Install ansible and sshpass for jenkins
+				- ansible playbooks in jenkins_home/ansible/
+				- Minimun functional set
+				- tasks.yml
+				- download package from artifactory -> unzip package -> deploy server
+				- Jenkins job deploy -> Invoke Ansible Playbook 
+				- Build jenkins job with version
+				- Log into testfixture docker container
+				- Check if server is running
+				- go to localhost:port to check if server is online
+				- Downgrade or upgrade using jenkins job and specifying version
+				- Build system poll from artifactory and deploy using read-access system
+			Integration testing:
+				- Testing performed to expose defects in the interfaces and in the interactions between integrated components or systems
+				- make run -> localhost:port
+				- curl response of server app and create a test for it
+			UI tests:
+				- Regression testing
+					- A test conducted to verify that software which was previously developed and tested still performs the same way after it is changed or interfaced with other software
+				- Acceptance testing
+					- A test conducted to determine if the requirements of a specification or contract are met
+				- E2E testing
+					- Testing and applications workflow from beginning to end
+				- Selenium -> webdriver to test web apps
+				- Robotframework BDD with SeleniumLibrary plugin and PageObject in an encapsulated resource model
+				- Robot env using Python-virtual-evironment
+				- webdrivermanager
+				- robot . <- must find tests
+				- log.html
+			Security tests:
+				- Static 
+					-
+				Dynamic
+					- Pros
+						- Test actual attack payloads
+						- Collaboration between developers, security and operations
+					- Cons
+						- Requires system to be running
+						- Can be slow
+					- Gauntlt
+						- What (look for cross site scripting using arachni), given (arachni is installed), when (when I launch arachni), then (arachni -check=xss* <url> -> 0 attacks should be found)
+						- gauntlt docker github
+						- git clone, make build, make install
+						- test against docker container
+						- gauntlt-docker attack
+					- retire
+						- npm install retire
+						- retire -j -> static analysis of requirements
+			Best practices:
+				- Each developer is responsible for their own changes
+				- Small changes
+				- Don't check in broken builds (take responsibility, check that build succeeds, revert prior version)
+				- Automate high quality testing
+				- Run tests before check in
+				- fix flaky tests
+				- Dont ignore tests
+				- Keep build clean and tested
+				- QA for high value activity
+				- Automate deployments
+				- Keep the build and deploy fast
+				- Crazy fast build times -> remove time waste from build cycle
+				- IRL
+					- Teach people to imagine a good CI/CD pipeline
+					- Changing process
+					- Look at total cycle time and attempt to minimize
+					- Balance benefits of fast feedback
+					- Builds are not reliable -> Too many tests are bad and ruin build quality
+					- Deploys take a long time
+					- Tradeoffs
+					- Just do it
+					- Take responsibility and test all steps
+					- Have gumption
