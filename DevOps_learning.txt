@@ -284,4 +284,53 @@ DevOps foundations - CI/CD notes:
 		- Rhytm of practice
 		- More time to be productive
 	- Build pipeline -> source code, tools, tests, artifacts, deployment, ci testing, production (+ linters, security testers etc.)
+	- Pipeline example
+		- Version Control using Github
+			- Always use version control
+			- Always be able to deploy dev/prod version using one command (makefile?)
+			- Easy-to-understand commit messages
+			- Master branch with development or issue branches so that commits aren't too big
+			- Commit hooks for testing changes (gitlab-ci.yml for example)
+			- Careful with secrets
+			- CircleCI for webhooks
+		- Test Automation using Jenkins
+			- Saas-based offering or Open Source
+			- CI is a practice not a tool
+			- Start with a clean environment
+			- Pass the coffee test -> Tests should pass in the time that it takes to get a cup of coffee
+			- Test locally before pushing
+			- Don't commit new code to broken builds
+			- Don't leave the build broken
+			- Don't remove failing tests
+			- Notifications from test pipelines if they fail or take over 1 hour
+			- jenkins docker with build-essentials, ansible, sshpass
+			- docker-compose.yml to start jenkins containers -> docker-compose up --build -d
+			- Poll SCM to check for changes in Git
+			- Build -> Execute Shell
+			- Works on the concept of plugins
+			- plugins.jenkins.io
+			- Don't install too many plugins so that jenkins master doesn't have too much downtime due to updates
+			- Job to get code from Git, zip it and send to Nexus
+		- Artifactory using Nexus
+			- Reliability, security, composability, shareability
+			- Build it, test it and package it
+			- Security, by authorization to artifactory so that code doesn't get sneaked in
+			- Artifactory repo let's users know what is packaged and can be used with what versions
+			- sonatype.com -> nexus repository opensourcesoftware
+			- Paid:
+				-JFrog Artifactory
+			- Free:
+				- Nexus repository manager 3
+				- Apache Archiva
+				- Many specific for for example docker containers, npm, .NET packages etc.
+			- docker-compose up docker.compose.yml nexus
+			- localhost:8081 or whatever set in docker-compose.yml
+			- Browse by components and assets
+			- Repositories -> Select Recipe
+			- Jenkins plugin for Nexus
+			- Nexus details for jenkins job
+			- 
+		- Deploy using Chef
+		- 
+
 	
