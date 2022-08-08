@@ -274,3 +274,14 @@ Kubernetes:
 		- ABAC: Attribute-based access control (parameter does have authorization or not)
 		- RBAC: Role-based access control (Role has authorization or not)
 		- Webhook (Check using kube-apiserver who has permissions)
+		
+DevOps foundations - CI/CD notes:
+	- CD -> Integration tests after/during deployment
+	- Benefits:
+		- Teamwork is better
+		- Cycle times are lower
+		- Better security
+		- Rhytm of practice
+		- More time to be productive
+	- Build pipeline -> source code, tools, tests, artifacts, deployment, ci testing, production (+ linters, security testers etc.)
+	
