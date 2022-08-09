@@ -322,6 +322,9 @@
 				```
 				file 'hello.txt' do 
 					content 'Hello, world!'
+					mode 0644
+					owner 'root'
+					group 'root'
 				end
 				```
 		### Chef server
@@ -329,6 +332,7 @@
 			- Stores cookbooks, roles, environments and policies needed
 			- indexes metadata about nodes
 			- acts as a pull server for nodes
+			
 		### Nodes
 		
 			- Nodes use chef client to pull policy from the chef server aka convergence
@@ -342,8 +346,16 @@
 			- Node object attributes
 			
 	- Uses Git
+	- sudo chef-client --local-mode hello.rb
+	- Resources take action on properties
+	- Principle of least surprise
 	
-	
+	## Test and repair
+		
+		- chef-client takes action only when it needs to. Thin of it as test and repair
+		- Chef looks at the current state of each resource and takes action only when that resource is out of policy
+		- Changing permissions on chef made file requires recipe policies
+		- docs.chef.io
 	
 # Jenkins:
 
