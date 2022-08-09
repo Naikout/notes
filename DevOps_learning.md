@@ -52,9 +52,12 @@
 		- -f 30 (forks) how many systems to execute upon
 
 # Puppet notes:
+	
 	- Roles and profiles
 	- vagrantup.com
+	
 	## Vagrantfile
+		
 		```
 		CPUS="1"
 		MEMORY="1024"
@@ -72,6 +75,7 @@
 		
 		end
 		```
+		
 	## commands
 		- vagrant up
 		- vagrant ssh
@@ -89,6 +93,7 @@
 		- puppet agent -t
 		- Change git branch master to production -> New branch production -> settings set production as default branch -> Save and del master
 		- mkdir /etc/puppetlabs/r10k
+		
 		### vim /etc/puppetlabs/r10k/r10k.yml:
 		```
 		:cachedir: '/var/cache/r10k'
@@ -100,6 +105,7 @@
 		```
 		
 		- r10k deploy environment -p <- get code from git
+		
 		### manifests/site.pp
 			```
 			node default {
@@ -112,21 +118,28 @@
 			```
 		- r10k deploy environment -p <- get code from git
 		- No duplicate declarations, for example two 'file' statements
+	
 	- Puppet forge check for packages (Check quality score and badge)
+	
 	## Puppetfile
+	
 		```
 		mod 'puppet/nginx', '1.0.0'
 		mod 'puppetlabs/stdlib'
 		mod 'puppetlabs/concat'
 		mod 'puppetlabs/translate'
 		```
+	
 	## control_repo/site/role/manifests/web.pp
+	
 		```
 		class profiel::web {
 		  include nginx
 		}
 		```
+	
 	## control_repo/site/role/manifests/app_server.pp
+	
 		```
 		class role::app_server {
 		  include profile::web
@@ -134,6 +147,7 @@
 		  include profile::app
 		}
 		```
+	
 	## control_repo/site/role/manifests/app_server.pp
 		```
 		class role::db_server {
@@ -143,16 +157,20 @@
 		```
 	## control_repo/site/role/manifests/master_server.pp
 		```
+		
 		class role::master_server {
 		  include profile::base
 		}
 		```
 	## control_repo/
+	
 		### environment.conf
+		
 		```
 			modulepath = site:modules:$basemodulepath
 		```
 	## control_repo/site/role/manifests/site.pp
+	
 			```
 			node default {
 				file {'root/README':
@@ -161,37 +179,48 @@
 				  owner   => 'root',
 				}
 			}
-			```
+			
 			node 'master.puppe.vm' {
 			  include role::master_server
 			}
-		
+			```
+
 	- puppetlabs docker
+	
 	## Modules
+	
 		### Manifests
 			- Puppet code for your module
 			- One class per manifest
 			- The class named after the moduel is in init.pp
 			- Example: the nginx class in the nginx modules is in manifests/init.pp
+		
 		### Files
 			- Static files such as conf
+		
 		### Templates
 			- Dynamic templates
+		
 		### Lib
 			- Additional code (features)
+		
 		### Task
 			- Ad hoc tasks (puppet bolt)
+		
 		### Other
 			- Examples
 			- spec
+		
 		### metadata.json
 			- Fills in the details of the module
+		
 		### README.md
 			- Documentation
 			
 		Puppet development kit -> puppetlabs pdk
 
 # Docker notes:
+	
 	- docker ps -l or -a 
 	- docker images -a
 	- docker rmi 
@@ -216,13 +245,16 @@
 	- Google kubernets or AWS kubernetes
 
 # Chef notes:
+	
 	- Building, deploying, automating
 	- CentOS provisioned via AWS
 	- Chef uses Ruby
 	- laptop <-> Vagrant
 	- laptop <-> Server <-> Nodes
 	- Chef DK
+	
 	## Config management
+	
 		- Application of programmatic methods that create consistency in the performance, function, design and operation of compute resources
 		- Applied over the life cycle of a system
 		- Verification of performance through testing
@@ -238,18 +270,26 @@
 		- Useful for cloud deployment
 		- Large scale automation of compute resources
 		- Can use the public clouds API
+		
 	## Infrastructure management
+	
 		- System resources
 		- Infrastructure becomes versionable
 		- Workstation - develop and test
 		- Chef server - upload code to server
 		- Nodes - distributed runners of chef code
+		
 		### Workstation
+		
 			- Manage server and nodes
-			#### Install Chef DK
-				- Available for windows
 			- Environment variables to path
+			
+			#### Install Chef DK
+			
+				- Available for windows
+			
 			#### --version command for:
+			
 				- chef
 				- chef-client
 				- knife
@@ -265,55 +305,70 @@
 			- vagrant up
 			- vagrant ssh
 			- Install chefdk using curl omnitruck.chef
+			
 			#### Common vagrant commands
+			
 				- ssh-config | Displays connection details
 				- init bento/centos-7.2| Creates a vagrant file
 				- status | Lists VMs and their status
 				- suspend | Saves VM state and shuts down
 				- destroy --force | Destroys all running VMs
 				- box add bento/centos-7.2. --provider=virtualbox | provision vagrant machine centos for vbox
+				
 			#### VM Centos
+			
 				- curl and install chefdk and text editor
+				
 				```
 				file 'hello.txt' do 
 					content 'Hello, world!'
 				end
 				```
 		### Chef server
+		
 			- Stores cookbooks, roles, environments and policies needed
 			- indexes metadata about nodes
 			- acts as a pull server for nodes
 		### Nodes
+		
 			- Nodes use chef client to pull policy from the chef server aka convergence
 			- Run system inventory and gather host details with the Ohai tool
+			
 		### Takeaways
+		
 			- Resource
 			- Recipe
 			- Cookbook
 			- Node object attributes
+			
 	- Uses Git
-	- 
+	
 	
 	
 # Jenkins:
+
 	## jenkins as a docker container:
+	
 		docker --version
 		docker pull jenkins/jenkins:lts
 		docker run --detach --publish 8080:8080 --volume jenkins_home:/var/jenkins_home --name jenkins jenkins/jenkins:lts
 		docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
+		
 	## Add Maven
+	
 		- Name it
 		- Apply it
 	## Job:
+	
 		- Job -> Github hook trigger for GITScm polling
 		- Job -> Poll SCM
 		- CleanWS() or Job -> Delete workspace before build starts
 		- Use secret files
 		- Abort the build if it's stuck
 		- Add timestamps to the console output
-		- 
 
 # Kubernetes:
+
 	- minikube, kind, kubernetes desktop
 	- .yaml files to create deployments
 	- kubectl get pods --show-labels
@@ -352,20 +407,25 @@
 	- kops for AWS cluster provisioning
 	- Cloud services have native klustering systems
 	- Managed kubernetes vs self install -> control vs use case
+	
 	## Namespaces:
 		- Kubernetes supports multiple virtual clusters backed by the same physical cluster. These virtual clusters are called namespaces.
 		- For dev test and prod, different usergroups etc.
-	- kubectl get namespaces
-	- kubectl create/delete -n namespace-name namespace
+		- kubectl get namespaces
+		- kubectl create/delete -n namespace-name namespace
+		
 	## Logs:
 		- stdout because kubectl logs will fetch them
 		- Elastic search for kube service and kibana 
+		
 	## Monitoring:
 		- cAdvisor open source resource collector
 		- Prometheus open source system monitoring and alerting toolkit
 		- Above tools typically linked to grafana
 		- Datadog and Splunk also
+		
 	## Authentication:
+	
 		- Normal users (humans)
 		- Service accounts managed by K8s API
 		- Define user with username, uid, group, extra fields
@@ -375,16 +435,22 @@
 		- Webhook (Check using kube-apiserver who has permissions)
 		
 # DevOps foundations - CI/CD notes:
+
 	- CD -> Integration tests after/during deployment
+	
 	## Benefits:
+	
 		- Teamwork is better
 		- Cycle times are lower
 		- Better security
 		- Rhytm of practice
 		- More time to be productive
-	- Build pipeline -> source code, tools, tests, artifacts, deployment, ci testing, production (+ linters, security testers etc.)
+		- Build pipeline -> source code, tools, tests, artifacts, deployment, ci testing, production (+ linters, security testers etc.)
+		
 	## Pipeline example
+	
 		### Version Control using Github
+		
 			- Always use version control
 			- Always be able to deploy dev/prod version using one command (makefile?)
 			- Easy-to-understand commit messages
@@ -392,7 +458,9 @@
 			- Commit hooks for testing changes (gitlab-ci.yml for example)
 			- Careful with secrets
 			- CircleCI for webhooks
+			
 		### Test Automation using Jenkins
+		
 			- Saas-based offering or Open Source
 			- CI is a practice not a tool
 			- Start with a clean environment
@@ -410,26 +478,34 @@
 			- plugins.jenkins.io
 			- Don't install too many plugins so that jenkins master doesn't have too much downtime due to updates
 			- Job to get code from Git, zip it and send to Nexus
+			
 		### Artifactory using Nexus
+		
 			- Reliability, security, composability, shareability
 			- Build it, test it and package it
 			- Security, by authorization to artifactory so that code doesn't get sneaked in
 			- Artifactory repo let's users know what is packaged and can be used with what versions
 			- sonatype.com -> nexus repository opensourcesoftware
+			
 			#### Paid:
 				-JFrog Artifactory
+				
 			#### Free:
+			
 				- Nexus repository manager 3
 				- Apache Archiva
 				- Many specific for for example docker containers, npm, .NET packages etc.
+				
 			- docker-compose up docker.compose.yml nexus
 			- localhost:8081 or whatever set in docker-compose.yml
 			- Browse by components and assets
 			- Repositories -> Select Recipe
 			- Jenkins plugin for Nexus
 			- Nexus details for jenkins job
-			-  
+			
+			
 		### Testing
+		
 			- makefile -> make test etc.
 			- Fast, reliable, isolate failures
 			- Unit (Junit, Xunit, Rspec), integration (Full application, API, Abao, RAML, Serverspec), e2e/ui(Selenium), security testing (Fortify, Findbugs, Gauntlt), Performance testing (System tests etc.)
@@ -438,39 +514,52 @@
 			- System under test -> The application and system which you are running your tests
 			- Lead time (Time taken from issue to production)
 			- Mock classes that contain external dependencies for unittests
+			
 			#### Philosophy:
+			
 				- Test-Driven Development write failing tests before coding
 				- Behavior-Driven Development writing tests in a simple end-user-behavior-centric language (like robotframework? Cucumber)
 				- Acceptance test-driven development, the practice of agreeing on acceptance tests before development to establish what is to be delivered
 				##### Big three testing metrics:
+				
 					- Cycle time (time from the start of work to delivery)
 					- Velocity (value delivered per unit time)
 					- Customer satisfaction (How well a product/service met the customer's needs. NPS score and bug reports work well here.)
-				- Be strict, test early, invest appropriately (Google guide is 70% E2E, 20% Integration, 10% Unit)
+					- Be strict, test early, invest appropriately (Google guide is 70% E2E, 20% Integration, 10% Unit)
+				
 			#### Unittests:
 				- Import testable module
 				- Fill arguments with mock data
 				- Check that test parameters are filled
 				- Test valid / invalid scenarios
+				
 		### Deploy using Chef
 			- Deploy with the same artifact, the same way, same (similar) environment, the same smoke tests -> tag smoke in robot that can be run in production
 			- Deploy small batches
 			- Keep changes loosely coupled to each other
 			- Basic api versioning and schema versioning
+			
 			#### Separate deploy and release
+			
 				- Blue/green deployments (publish to one machine at a time)
 				- Feature flags to check if problems with said feature and easy to toggle on/off
 				- Canary deployment
+				
 			#### Deployment tools
+			
 				- Source pulls
 				- CM systems Chef or puppet
 				- Orchestration push  like ansible
 				- Build like docker
 				- and many more Commercial options
 				- Custom deploy option
+				
 			#### Product update deploys to customer
+			
 				- Debian container -> Update server -> Rundeck orchestration server -> Puppet installation
+				
 			#### Deployment using ansible
+			
 				- Dockerfile Ubuntu 20 container
 				- docker-compose.yml with jenkins
 				- docker-compose up --build -d -> jenkins
@@ -487,11 +576,15 @@
 				- go to localhost:port to check if server is online
 				- Downgrade or upgrade using jenkins job and specifying version
 				- Build system poll from artifactory and deploy using read-access system
+				
 			#### Integration testing:
+			
 				- Testing performed to expose defects in the interfaces and in the interactions between integrated components or systems
 				- make run -> localhost:port
 				- curl response of server app and create a test for it
+				
 			#### UI tests:
+			
 				- Regression testing
 					- A test conducted to verify that software which was previously developed and tested still performs the same way after it is changed or interfaced with other software
 				- Acceptance testing
@@ -504,15 +597,23 @@
 				- webdrivermanager
 				- robot . <- must find tests
 				- log.html
+				
 			#### Security tests:
+			
 				##### Dynamic
+				
 					###### Pros
+					
 						- Test actual attack payloads
 						- Collaboration between developers, security and operations
+						
 					####### Cons
+					
 						- Requires system to be running
 						- Can be slow
+						
 					####### Gauntlt
+					
 						- What (look for cross site scripting using arachni), given (arachni is installed), when (when I launch arachni), then (arachni -check=xss* <url> -> 0 attacks should be found)
 						- gauntlt docker github
 						- git clone, make build, make install
@@ -521,7 +622,9 @@
 					###### retire
 						- npm install retire
 						- retire -j -> static analysis of requirements
+						
 			#### Best practices:
+			
 				- Each developer is responsible for their own changes
 				- Small changes
 				- Don't check in broken builds (take responsibility, check that build succeeds, revert prior version)
@@ -534,7 +637,9 @@
 				- Automate deployments
 				- Keep the build and deploy fast
 				- Crazy fast build times -> remove time waste from build cycle
+				
 				##### IRL
+				
 					- Teach people to imagine a good CI/CD pipeline
 					- Changing process
 					- Look at total cycle time and attempt to minimize
