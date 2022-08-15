@@ -919,3 +919,122 @@ docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
 - Just do it
 - Take responsibility and test all steps
 - Have gumption
+
+# Version Control
+
+- automatic backups
+- change-by-change log of your work
+- both short-term and long-term
+- easy to create a 'sandbox' to try new things
+- rollbacks are easy
+- labeling significant changes
+
+## How do teams benefit from version control?
+
+- Synchronization - easy to keep team members always up-to-date
+- accountability - know who made each change and why
+- conflict detection - keep the build clean every time
+
+## Essential
+
+- repository for file storage and history
+- working set is the current state of files as stored on your local machine
+- add files to commit
+- commit to check in added files
+- checkout update to copy changes from repo to local
+- tag to mark the current state of the repo for future checkout
+- revert / rollback to fix changes by overwrriting files in working set
+
+## Getting started
+
+- Init repo
+- and main func to repo with commit
+- add func with second commit
+- git log --oneline --all
+- git diff <commit> <commit>
+
+## History
+
+Centralized
+---
+
+- SCCS 1972 from bell labs
+- RCS 1982
+- CVS 1986 file-focused first central repository
+- perforce 1995 still the biggest repository inside Google (in 2012)
+- subversion 2000
+- Microsoft Team Foundation Server 2010 comes with MSDN subscription
+
+Distributed
+---
+
+- Git 2005 created by Linus Torvalds after BitKeeper
+- Mercurial 2005 also created in response to BitKeeper change
+
+## Terminology
+
+- push / export -> send changes from one repo to another (distributed only)
+- pull / import -> update your working set with updates (distributed only)
+- branch / fork -> clone of a repo
+- merge -> integrate your branch back to the original repo
+- reverse integration / forward integration -> branching by features
+
+## Concepts
+
+- Init / create repo
+- Add files
+- Commit / Stage files
+- Files to repo
+- Checkout or update changes to working set
+- Shelf set aka stash
+- Branches if it is lightweight such as mercurial and git
+- Revert / rollback to specific version
+- tags / labeling is a human readable name for feature versions
+- 
+
+## Subversion
+
+- SVN
+- Centralized
+- Free and commercial hosting options
+- Setup environment for commit message text editor
+- svn mkdir
+- svn import <path>
+- svn co <file>
+- svn status
+- svn add <file>
+- svn commit -m "message"
+- svn update (-r <revision name>)
+- svn log (-q)
+- svn ci
+- svn diff (-r <revision name>)
+- svn revert
+- svn copy trunk tags/v1
+- svn copy trunk branches\b1
+- svn merge -r6:7 branches\b1 trunk
+- TortoiseSVN
+
+
+## Perforce
+
+- File depot
+- Mark for add
+- Submit -> changelist description
+- Refresh
+- Folder History
+- Time-lapse view aka blame or history
+- Diff against have revision
+- Revert
+- Rollback to revision, changelist, date/time, label
+- label
+- depot/branch1/ + refresh
+- checkout and open
+- Merge/Integrate -> Options -> Automatically resolve changes
+- 
+
+## Microsoft Team Foundation Server
+
+## Git
+
+## Mercurial
+	
