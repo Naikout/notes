@@ -1030,11 +1030,66 @@ Distributed
 - depot/branch1/ + refresh
 - checkout and open
 - Merge/Integrate -> Options -> Automatically resolve changes
-- 
 
 ## Microsoft Team Foundation Server
 
+- Centralized
+- free (for open-source projects) and commercial
+- First create team project then folders
+- Define process template -> Visual Studio Scrum
+- Create an empty folder
+- New project -> Console Application -> Location
+- Add solution to source control from solution explorer
+- There should now be a folder in the team folder
+- Team explorer -> Pending changes -> comment -> check in confirmation
+- Add class -> File has + indicating it is new to be added
+- Solution explorer -> Compare
+- View history -> Get this version / rollback
+- New label with name, comment and version
+- Changesets and labels tabs
+- Branches are new folders inside current folder
+- Source Control Merge Wizard with source branch and target branch as options
+
 ## Git
 
+- Distributed
+- free with commercial hosting options
+- open-source free bits
+- free hosting for open-source on github
+- make directory
+
+Commands
+---
+- init (initialize repo)
+- status (See current status of changes)
+- diff (See changes of files)
+- checkout (go to branches, commits)
+- add (Add file for to be committed)
+- commit (Commit files with message of changes and changeset id) -a (open text editor) -m (Commit message in quotations)
+- log (Check previous commits)
+- tag -a <version> -m <name>
+- push (push changes to branch in repo)
+- pull (pull changes from repo)
+- merge (merge changes from target to current)
+- rebase (Rebase commit-by-commit) 
+	
 ## Mercurial
 	
+- Distributed
+- free with commercial options
+- Config user via mercurial.ini with email
+- TortoiseHG
+	
+Commands
+---
+- hg
+- --version
+- init
+- status
+- add
+- commit (-m)
+- log (-v)
+- revert (-r)
+- tag(s)
+- branch
+
