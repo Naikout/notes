@@ -1092,4 +1092,78 @@ Commands
 - revert (-r)
 - tag(s)
 - branch
+	
+## Lean and agile in devops
+
+- Agile manifesto because software development failed too often
+- Jidoka Autonomation; intelligent or humanized automation
+- Greenfield team
+- Backlog with task, assigned to and scheduler
+- Iteration via sprints
+- Theory of constraints
+- Minimum viable product
+- Nemawashi -> Informally and quietly laying the groundwork for a proposed change or project, by talking to the people concerned to gain their support
+- Master / Trunk flow
+- Code reviews
+- Prioritized workflow
+- Goals for every iteration
+- 
+
+12 principles
+---
+1. Our highest priority is to satisfy the customer through early and continous deliver of valuable software
+2. Welcome changing development
+3. Deliver working software frequently
+4. Business people and developers must work together daily throughout the project
+5. Build projects around motivated individuals. Give them the environment and support they need, and trust them to get the job done.
+6. The most efficient and effective method of conveying information to and within a development team is face-to-face conversation.
+7. Working software is the primary measure of progress
+8. Agile processes promote sustainable development. The sponsors, developers, and users should be able to maintain a constant pace indefinitely
+9. Continuous attention technical excellence and good design enhances agility
+10. Simplicity - the art of maximizing the amount of work not done-is essential
+11. The best architectures, requirements, and designs emerge from self-organizing teams
+12. At regular intervals, the team reflects on how to become more effective, then tunes and adjusts its behavior accordingly
+
+- Visibility and constant delivery of business value
+- Owners always know how to project is progressing
+- Deliberately more variable
+- Frequent communication
+
+Methodologies
+|---|
+Extreme Programming (XP) | 
+Scrum | Product backlog + Grooming -> Planning -> Sprint Backlog -> Sprint (2-4 weeks) with stand-up aka daily scrum -> Valuable product
+Feature-driven development (FDD) | 
+Rational unified process (RUP) | 
+Crystal | 
+Lean | 
+Adaptive software development (ASD) | 
+Kanban | Visualize the workflow, Limit work in progress, Manage the flow, Make process policies explicit, Improve collaboratively + kanban board
+Dynamic Systems Development Method (DSDM) | 
+Scrumban | 
+
+- Value stream map to show value in organization
+- Muda (Waste) work that absorbs resources but adds no value
+- Mura (Unevenness) work coming in unevenly instead of a constant or regular flow
+- Muri (Unreasonable) work imposed on workers and machines
+- Kaizen continuous improvement
+
+Lean Principles
+---
+
+- Small deliverables and limiting work in progress
+- Information radiators and visibility into flow
+- Gathering, broadcasting, and implementing customer feedback
+- Empowered development teams free to experiment and improvement
+
+
+Build-Measure-Learn
+---
+- Build minimum viable product
+- Measure outcome and internal metrics
+- Learn about your problem and your solution
+- Repeat go deeper where it's needed
+
+
+
 
