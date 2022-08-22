@@ -990,7 +990,6 @@ Distributed
 - Branches if it is lightweight such as mercurial and git
 - Revert / rollback to specific version
 - tags / labeling is a human readable name for feature versions
-- 
 
 ## Subversion
 
@@ -1107,7 +1106,118 @@ Commands
 - Code reviews
 - Prioritized workflow
 - Goals for every iteration
-- 
+- Per ticket sign-off procedure
+- Go/no-go meeting
+- Peer review for pull reviews
+- Automated testing
+- Scrum master aka he facilitator for a product development team that uses scrum, responsible for coaching the team on scrum practices
+- Time to market lower than others
+- Refactoring aka restructuring existing software code without changing its external behavior
+- Using source control allows the building and testing of your infrastructure automation within your CI pipeline
+- Burndown charts for sprints, epics and release to check progress
+- Velocity chart tracking
+- WIP, throughput, lead and cycle times
+- Don't weaponize metrics so that teams don't turn on each other
+- The phoenix project and leading the transformation books
+- Design reviews with mixed teams of devs and ops
+- End-of-iterartion demos
+- Discontinuation of ops team when DevOps is successful
+- Manual tickets = Lost efficiency
+- Backlog full of requirements to user stories which is a requirements written from the pov of a user and the functionality they desire
+- Personas which are definitions of an archetypal user of the system
+- Service-level Agreement SLA is an agreed level of service as measured by a specific metric
+- Visibility first approach
+- Key performance indicators aka metrics used to determine how effectively you're meeting your objectives
+- Continuous learning by using Kaizen which is Change + Better = Continuous Improvement
+- Improvement Kata in TPS is Plan -> Do -> Check -> Act -> Plan...
+- Merit badge system earn badges by taking courses or tests held by experts in subjects
+- Work-life balance
+- Reward hard work by letting team off early after sprint demos and occasionally on fridays
+- Pilot new projects where you can greenfield teams
+- Try something you think will work for your organization
+- Measure results
+- Adjust
+- Iterate
+- Empower project teams instead of dictatoral leading
+- Align teams on common processes, tools, and work cultures to facilitate common change
+- The hardest part of all this is changing the culture the way people are used to working and behaving
+- Don't get carried away to avoid waste
+
+Lean UX
+---
+- Manifesto: "We are developing a way to create digital experiences that are valued by our end users. Through this work, we hold in high regard the following"
+- Early customer validation over releasing products with unknown end-user value
+- Collaborative design over designing on an island
+- Solving user problems over designing for the next cool feature
+- Measuring KPIs over undefined success metrics
+- Applying approriate tools over following a rigid plan
+- Nimble design over heavy wireframes, comps or specs
+- As stated in the Agile Manifest, "While there is value in the items on the right, we value the items on the left more"
+- Early user input
+- Frequent user feedback
+- Continued iteration
+- Prioritize prototyping
+
+Books
+---
+- Lean UX: Applying Lean Principles to Improve User Experience
+- UX For Lean Startups: Faster, Smarter User Experience Research and Design
+- Running Lean: Iterate from Plan A to a plan that works
+- Lean Enterprise: How High Performance Organizations Innovate at Scale
+- Lean Customer Development: Build products your customers will buy
+- Lean Branding: Creating dynamic brands to generate conversion
+- Lean Analytics: Use data to build a better startup faster
+- Lean IT: Enabling and sustaining your lean transformation
+- Lean Software Development: An agile toolkit
+- The Goal: A process of ongoing improvement
+- The Lean Startup: How today's entrepreneurs use continuous innovation to create radically successful businesses
+- The Phoenix Project
+- The DevOps Handbook
+
+ChatOps
+---
+- Shared chat channels
+- Commands executed in chat
+- Chatbot then runs scripts
+- ChatOps: Managing Operations in Group Chat - Jason Hand 2016
+- Commits, test results, merge requests, smoke tests, status info, run deployments
+	
+Common processes
+---
+- Same IDE
+- Same ticketing system
+- Same testing requirements
+	
+As you scale
+---
+- Reduce barriers to communication
+- Scaled Agile Framework (SAFe) can help reduce complexity
+- Goals and expectations should be clear
+- Empower your teams
+- Mistakes are expected, as are learning opportunities
+
+	
+(Melvin) Conway's Law
+---
+	> Organizations which design systems are constrained to produce designs which are copies of the communication structures of these organizations
+
+SLA example
+|---|
+Service usage, such as visitors or new users
+Service performance
+Service availability
+Delivery speed/cycle time
+Customer support/bugs reported
+Percentage of our time spent on new features versus maintenance
+	
+Blameless post-mortems instead of blaming for faults
+|---|
+A description of the incident
+A description of the root cause
+How the incident was stabilized or fixed
+A timeline of events, including all actions taken to resovle the incident
+How the incident affected customers
+Remediations and corrective actions
 
 12 principles
 ---
@@ -1129,18 +1239,18 @@ Commands
 - Deliberately more variable
 - Frequent communication
 
-Methodologies
-|---|
-Extreme Programming (XP) | 
+Methodologies | Summary
+--- | ---
+Extreme Programming (XP) | N/A
 Scrum | Product backlog + Grooming -> Planning -> Sprint Backlog -> Sprint (2-4 weeks) with stand-up aka daily scrum -> Valuable product
-Feature-driven development (FDD) | 
-Rational unified process (RUP) | 
-Crystal | 
-Lean | 
-Adaptive software development (ASD) | 
+Feature-driven development (FDD) | N/A
+Rational unified process (RUP) | N/A
+Crystal | N/A
+Lean | N/A
+Adaptive software development (ASD) | N/A
 Kanban | Visualize the workflow, Limit work in progress, Manage the flow, Make process policies explicit, Improve collaboratively + kanban board
-Dynamic Systems Development Method (DSDM) | 
-Scrumban | 
+Dynamic Systems Development Method (DSDM) | N/A
+Scrumban | N/A
 
 - Value stream map to show value in organization
 - Muda (Waste) work that absorbs resources but adds no value
@@ -1150,7 +1260,6 @@ Scrumban |
 
 Lean Principles
 ---
-
 - Small deliverables and limiting work in progress
 - Information radiators and visibility into flow
 - Gathering, broadcasting, and implementing customer feedback
@@ -1163,7 +1272,3 @@ Build-Measure-Learn
 - Measure outcome and internal metrics
 - Learn about your problem and your solution
 - Repeat go deeper where it's needed
-
-
-
-
