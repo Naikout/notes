@@ -1305,7 +1305,7 @@ Build-Measure-Learn
 	
 ### Game Days
 
-> For DiRT-style events to be successful, an organizaton first needs to accept system and process failures as a means of learning... We design tests that require engneers from several groups who might not normally work together to interact with each other. That way, should a real large-scale disaster ever strike, these people will already have strong working relationships"
+> For DiRT-style events to be successful, an organizaton first needs to accept system and process failures as a means of learning... We design tests that require engneers from several groups who might not normally work together to interact with each other. That way, should a real large-scale disaster ever strike, these people will already have strong working relationships -Kripa Krishnan"
 
 - Fire drills for system
 - Execute disasters and test recovery measures
