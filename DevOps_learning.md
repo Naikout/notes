@@ -1272,3 +1272,55 @@ Build-Measure-Learn
 - Measure outcome and internal metrics
 - Learn about your problem and your solution
 - Repeat go deeper where it's needed
+
+## Lean Technology Strategy: Building High-Performing Teams	
+- Invest in your people
+- Job satisfaction is the most important indicator of performance
+- How to deal with failure
+- Low performance workplace finds person to blame
+- High performance learns from mistakes without blaming
+- At the Toyota plant you can take time with the car by pulling on a line and a manager comes to help you
+- Change culture (Give better tools, teach how to do things better)
+- Machines do the boring repetetive tasks and people do the techincal problems
+
+> The talent myth assumes that people make organizations smart. More often than not, it's the other way around... Our lives are so obviously enriched by individual brilliance. Groups don't write great novels, and a committee didn't come up with the theory of relativity. But companies work by different rules. They don't just create; they execute and compete and coordinate the efforts of many different people, and the organizations that are most successful at that task are the ones where the system is the star. - Malcolm Gladwell
+
+- Fixed mindset vs Growth mindset
+- 
+	
+### Autonomous Teams
+- Give teams the tools and authority to choose tools and ush changes to production
+- Ensure teams have the skills and authority to design, run, and evolve experiments
+- Remove dependencies between teams: architectural, communication, approval
+- Think about system's architecture
+- Leaders create alignment and transparency
+
+### Encouraging Failure
+- In a complex, adaptive system failure is inevitable
+- When accidents happen, human factors are the starting point of a blameless post-mortem
+- Ask: how can we get people better information?
+- Ask: how can we detect and limit failure modes?
+- Chaos monkey from netflix 
+- Hold blameless post-mortems and retrospectives regularly after incidents
+	
+### Game Days
+
+> For DiRT-style events to be successful, an organizaton first needs to accept system and process failures as a means of learning... We design tests that require engneers from several groups who might not normally work together to interact with each other. That way, should a real large-scale disaster ever strike, these people will already have strong working relationships"
+
+- Fire drills for system
+- Execute disasters and test recovery measures
+- Disaster recovery testing brings teams together
+
+### 5 Principles of Growth
+- The job effective leadership is to create empowered, autonomous teams
+- Leadership should create alignment and transparency so that those teams can move together in pursuit of the same organizational goals
+- Managers should be helping teams to learn and improve
+- Create psychological safety
+- Practice failure in pursuit of learning
+	
+### Google re:WORK
+- Psychological safety - Team members feel safe to take risks and be vulnerable in front of each-other
+- Dependability - Team members get things done on time and meet Google's high bar for excellence.
+- Structure & Clarity - Team members have clear roles, plans and goals
+- Meaning - Work is personally important to team members
+- Impact Team members think their work matters and creates change
