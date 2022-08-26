@@ -1324,3 +1324,57 @@ Build-Measure-Learn
 - Structure & Clarity - Team members have clear roles, plans and goals
 - Meaning - Work is personally important to team members
 - Impact Team members think their work matters and creates change
+	
+## Lean Technology Strategy: Starting Your Business Transformation
+- Change the way people behave
+- Change the system of work
+- Demostrate work in iterations
+- Embrace change
+- Toyota Combine Improvement Kata and Coaching Kata
+- Helping employees solve problems themselves
+- Where in our process are we going to make a change
+- What are we moving towards
+- Catch ball -> Leader tells what we want -> Workers tell how they got there and what they learned -> Teach leader and teammates
+- Virtuous feedback loops
+- Go and see
+- Think big, learn fast, start now
+- Secure a mandate, sponsor and support
+- Right people, right place
+- Act your way to a new culture
+- Model a behavior you want to see in others
+- Build the right thing and build it the right way
+- Learn, measure, build
+- Minimun viable product a small experiment to test hypothesis of product
+- Deilver in small batches
+- Trust cadence by building trust with small deliveries and demos to customer
+- Build in feedback loops and customer support
+- Test with customers to see what they want instead of assuming based on experience only
+- Demonstrate evidence for future providers
+- Scale lessons learnt from the chasm
+- Do one thing differently tommorrow
+	
+### Strategic Deployment
+- Hosin (What)
+- Value Stream Map (Where)
+- Improvement Kata (How)
+
+### Coaching kata
+- What is your **target condition**?
+- What is your **actual condition**?
+- What **obstacles** do you think are preventing you from reaching the target condition? What **one** are you addressing now?
+- What is your **next step**? [Next experiment] What do you expect?
+- How quickly can we go and see what we **have learned** from that step?
+- Quicker feedback
+	
+### Improvement Kata
+- Experimenting your way forward, instead of trying to device your way forward
+- Current condition
+- Threshold of knowledge
+- Experiments at the current knowledge threshold
+- Next target condition (date)
+- Challenge
+
+1. Understand the direction of challenge
+2. Grasp the current condition
+3. Establish the next target condition
+4. Toward the target condition
