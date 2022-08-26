@@ -1378,3 +1378,198 @@ Build-Measure-Learn
 2. Grasp the current condition
 3. Establish the next target condition
 4. Toward the target condition
+	
+## Lean Technology Strategy: Moving Fast With Defined Constraints
+
+- Risk reduction
+- There is always risk and it cannot be fully negated
+- All you can do is be comfortable with the current level of risk
+- Different conditions mean different rules for controls
+- Biggest risk is building the wrong thing in the wrong way
+- Talk to other teams in the organization
+- Mind the access
+- Clean up after yourselves
+- Audit systems
+- E2E pipeline should be monitored and audited
+- Avoid risk management theatre
+- Get everyone thinking about security and risk management and gaps in those
+- Fix rate
+- Consider GRC from the beginning
+- Create visibility & Transparency
+
+### Schneider cultural model
+- Cultivation
+- Collaboration
+- Control
+- Competence
+
+People | Company
+--- | ---
+Learning, Experiment | GRC, Finance, IT OPs
+Agile, Lean | Craftmanship, IT OPs
+
+### Audits
+
+What | Why
+--- | ---
+Independent | Compliance
+Inspection/Examination | Root Cause Analysis
+Defined Scope | Level of assurance
+Report and consequences | N/A
+
+- Goal = To reduce risks
+	
+### Controls
+
+What | Why
+--- | ---
+Activities we engane in to reduce the overall risks to our organization: policies, process, procedures such as approvals, report generation | Compliance
+N/A | Reduce operational risk and achieve better outcomes
+	
+- Goal = To reduce risks
+	
+## DevSecOps
+- Old way of security testing wont work because it is too slow, too many people involved
+- Who is responsible for security testing
+- Time matters in an agile, or continuous delivery model
+	
+> The only thing more dangerous than a developer is a developer conspiring with security - Gene Kim, The Phoenix Project
+
+- Merging of security into DevOps process
+- Further the goal of giving dev teams more ownership
+- Integrate automated security into every step of the process
+- Key to being quick and agile
+- May affect which tools can be used
+- Everything needs to happen quickly
+- Don't automat pushing a button
+- Real-time notification for developers
+- ChatOps, not PDFs
+
+> If you automate a **mess** you get an **automated** mess - Rod Michael, Directory of Customer E-Business, Rockwell Automation
+	
+- Educate the developers on security basics
+- Ensure they have the tools and resources to fix security issues
+- Give them the tools to security test
+- They should be responsible for security of app
+- Flip the role of security team to auditor
+- Shift security to the left and also everywhere
+- helps things to get done more quickly
+- Enable development
+- Cloud provides speed, agility, security
+- DevOps and cloud are partners
+- Only effective way of going DevOps is in a cloud
+- Cloud could be internal or external, or public or private
+- Use APIs for DevSecOps for example remote scanners
+- Connectivity to testing systems
+- Automation is a DevOps partner
+- Experiment to find out what works and what doesn't
+- Create feedback loops to find out if current toolset is working
+- Start easy
+- Find a team is passionate
+- Start with a standard language or toolset
+- Toolset doesn't have to be right the first time
+- Security team, get out of the way!
+- Security experts are advisors and coaches
+- Turn the security checks into code
+- No PDFs or hard documents
+- Work with DevOps team to know what's in place
+- Make security process flexible
+- Tools chosen should work with different processes
+	
+### More information
+- A DevSecOps Playbook by SANS institute
+- Continuous Application Security Playbook by Contrast Security
+- Awesome DevSecOps at github.com
+
+### Unified tools
+- Tools should be part of a single pipeline
+- Dev = Detect
+- Ops = Detect, Protect and Block
+
+### OPS automation
+- Vulnerability scanning
+- Network security group review
+- Automated patching compliance
+- Encryption at rest
+
+### Different Apps, different processes
+
+Dev tools | SecOps tools
+--- | ---
+Maven + Jenkins | IAST Tool ZAP
+TFS + Bamboo | SonarQube, Burp, Nessus
+SVN + Gitlab | PMD MobSF
+
+### Key things to have in place for automation and security
+- Automated builds
+- Automation tool such as jenkins
+- Task tracking system
+- Reliable unit tests
+- Security testing
+- Mobile application testing
+- Vulnerability scanning
+	
+### Containers and security
+- Can be useful to security in DevSecOps and CI/CD
+- Makes security quick and easy
+- Create a container of security tests for similar applications
+- Use security tools mentioned below
+- Integrate with automation server
+- Use an artifactory to keep containers up-to-date
+
+### Types of tools
+
+Static application security testing (SAST)
+|---|
+Analyzes source code |
+Supports one or more languages |
+Tends to have a very high false positive rate |
+Commercial: Fortify, AppScan, Checkmarx |
+Open Source: FindSecBugs, Brakeman, PMD |
+	
+Dynamic application security testing (DAST)
+|---|
+Runs automated penetration scans |
+Tries to hack into the website |
+Scans take a long time to complete |
+Commercial: WebInspect, Burp, AppSpider |
+Open source: ZAP
+	
+Interactive application security testing (IAST)
+|---|
+Security tests happen while app is used |
+Works using instrumentation |
+Low false positive rate and immediate feedback |
+Commercial: Contrast, Seeker |
+Open source: None yet |
+Security testing is performed while unit test run |
+Immediate results that can be provided to dev team |
+Perfect for DevOps security testing |
+	
+### API key to DevSecOps automation
+- Takes the manual part out of the equation
+- Allows for scripting
+- Allows easy flexibly in testing
+
+### Security team needs to provide
+- Framework
+- Tools
+- Expertise
+- Security team and dev team are partners
+- Dev team is responsible, and security team is accountable
+
+### DevSecOps vs Rugged DevOps
+- Sometimes terms are use interchangeably
+- DevSecOps focus is on overall automation
+- Rugged DevOps is more developer focused
+	
+Normal Security Scan
+|---|
+Develop Code |
+Send Code to Security |
+Scan code |
+Send PDF of result |
+Find false positive result |
+Fix security defects |
+
+Typical time: 1-2 weeks
